@@ -27,7 +27,7 @@ class UserTable extends React.Component {
         columns={this.state.columns}
         data={query =>
           new Promise((resolve, reject) => {
-            let url = 'http://localhost:4000/api/users'
+            let url = 'http://localhost:4000/api/v1/users'
             // url += '&page=' + (query.page + 1)
             fetch(url)
               .then(response => response.json())
@@ -44,14 +44,22 @@ class UserTable extends React.Component {
         editable={{
           onRowAdd: newData =>
             new Promise((resolve, reject) => {
-              setTimeout(() => {
-                {
-                  const data = this.state.data;
-                  data.push(newData);
-                  this.setState({ data }, () => resolve());
-                }
-                resolve()
-              }, 1000)
+                let url = 'http://localhost:4000/api/v1/users'
+            // url += '&page=' + (query.page + 1)
+            console.log(newData)
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(newData),
+                headers:{ 'Content-Type': 'application/json' }
+            })
+              .then(response => response.json())
+              .then(result => {
+                resolve({
+                  data: result.data,
+                  page: 0,
+                  totalCount: result.total,
+                })
+              })
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise((resolve, reject) => {

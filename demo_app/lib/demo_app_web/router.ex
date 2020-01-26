@@ -17,11 +17,15 @@ defmodule DemoAppWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
   end
 
-  scope "/api", DemoAppWeb do
+  scope "/api/v1", DemoAppWeb do
     pipe_through :api
 
     get "/users", UserController, :get_all
+    post "/users", UserController, :add_user
+
+
   end
 end
