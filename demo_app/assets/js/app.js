@@ -17,8 +17,8 @@ import "phoenix_html"
 // import socket from "./socket"
 import React from "react"
 import ReactDOM from "react-dom"
-const A = () => <div>This is a React Component!!!</div>
+import UserTable from "../js/userTable.js"
 ReactDOM.render(
-    <A/>,
+  <UserTable/>,
     document.getElementById("demo-app")
   )
