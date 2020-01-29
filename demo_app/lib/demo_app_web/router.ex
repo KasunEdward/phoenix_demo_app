@@ -25,6 +25,7 @@ defmodule DemoAppWeb.Router do
 
     get "/users", UserController, :get_all
     post "/users", UserController, :add_user
+    delete "/users/:id", UserController, :delete_user
 
 
   end

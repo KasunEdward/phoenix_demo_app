@@ -10,6 +10,7 @@ class UserTable extends React.Component {
     super(props);
     this.state = {
       columns: [
+        { title: 'Id', field: 'id', hidden: true },
         { title: 'Name', field: 'name' },
         { title: 'Age', field: 'age' }
       ],
@@ -75,15 +76,19 @@ class UserTable extends React.Component {
             }),
           onRowDelete: oldData =>
             new Promise((resolve, reject) => {
-              setTimeout(() => {
-                {
-                  let data = this.state.data;
-                  const index = data.indexOf(oldData);
-                  data.splice(index, 1);
-                  this.setState({ data }, () => resolve());
-                }
-                resolve()
-              }, 1000)
+                let url = 'http://localhost:4000/api/v1/users/' + oldData["id"]
+                console.log(oldData)
+                fetch(url, {
+                    method: 'DELETE'
+                })
+                .then(response => response.json())
+                .then(result => {
+                    resolve({
+                    data: result.data,
+                    page: 0,
+                    totalCount: result.total,
+                    })
+              })
             }),
         }}
       />

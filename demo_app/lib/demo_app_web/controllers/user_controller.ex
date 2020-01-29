@@ -19,6 +19,17 @@ defmodule DemoAppWeb.UserController do
       _ ->
         json conn, %{"success"=> false}
     end
+  end
 
+  def delete_user(conn, params) do
+    IO.puts("-------------------delete user #{inspect params}")
+    case DemoApp.User.User.delete_user(String.to_integer(params["id"])) do
+      :ok ->
+        users = DemoApp.User.User.get_all()
+        total = length(users)
+        json conn, %{"success"=> true, "data"=> users, "total" => total}
+      _ ->
+        json conn, %{"success"=> false}
+    end
   end
 end
