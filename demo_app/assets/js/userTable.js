@@ -26,6 +26,12 @@ class UserTable extends React.Component {
       <MaterialTable
         title="User Details"
         columns={this.state.columns}
+        options={{
+          padding: "dense",
+          rowStyle: rowData => ({
+            backgroundColor: (rowData.tableData.id % 2 == 1) ? '#EEE' : '#FFF'
+          })
+        }}
         data={query =>
           new Promise((resolve, reject) => {
             let url = 'http://localhost:4000/api/v1/users'
@@ -41,7 +47,6 @@ class UserTable extends React.Component {
               })
           })
         }
-        padding="dense"
         editable={{
           onRowAdd: newData =>
             new Promise((resolve, reject) => {
@@ -91,7 +96,7 @@ class UserTable extends React.Component {
               })
             }),
         }}
-      />
+      />  
       </div>
     )
   }
