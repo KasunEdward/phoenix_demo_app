@@ -12,7 +12,11 @@ class UserTable extends React.Component {
       columns: [
         { title: 'Id', field: 'id', hidden: true },
         { title: 'Name', field: 'name' },
-        { title: 'Age', field: 'age' }
+        { title: 'Age', field: 'age' },
+        { title: 'Gender', field: 'gender' },
+        { title: 'City', field: 'city' },
+        { title: 'Inserted At', field: 'inserted_at' },
+        { title: 'Updated At', field: 'updated_at' }
       ],
     }
   }

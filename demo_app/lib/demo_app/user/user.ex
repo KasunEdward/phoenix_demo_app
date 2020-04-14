@@ -2,7 +2,7 @@ defmodule DemoApp.User.User do
   import Ecto.Query
 
   def get_all() do
-    DemoApp.User.UserSchema |> select([u],  %{"id" => u.id, "name" => u.name, "age" => u.age}) |> DemoApp.Repo.all
+    DemoApp.User.UserSchema |> select([u],  %{"id" => u.id, "name" => u.name, "age" => u.age, "gender" => u.gender, "city" => u.city, "inserted_at" => u.inserted_at, "updated_at" => u.updated_at}) |> DemoApp.Repo.all
   end
 
   def add_user(params) do
