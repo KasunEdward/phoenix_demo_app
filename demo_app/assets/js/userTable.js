@@ -13,10 +13,10 @@ class UserTable extends React.Component {
         { title: 'Id', field: 'id', hidden: true },
         { title: 'Name', field: 'name' },
         { title: 'Age', field: 'age' },
-        { title: 'Gender', field: 'gender' },
+        { title: 'Gender', field: 'gender', lookup: { "Male": 'Male', "Female": 'Female' }},
         { title: 'City', field: 'city' },
-        { title: 'Inserted At', field: 'inserted_at' },
-        { title: 'Updated At', field: 'updated_at' }
+        { title: 'Inserted At', field: 'inserted_at', editable: 'never'},
+        { title: 'Updated At', field: 'updated_at', editable: 'never' }
       ],
     }
   }
